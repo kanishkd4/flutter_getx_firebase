@@ -8,20 +8,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Clicks: ${counterController.counter.value}"),
-        SizedBox(
-          height: 10,
-        ),
-        ElevatedButton(
+      body: Obx(() => Column(
+            /// we have to wrap everything around obx and then the counter actually changes. So the whole app is now based on getx.
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(child: Text("Clicks: ${counterController.counter.value}")),
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(OtherScreen());
+                  },
+                  child: Text("Open other screen"),
+                ),
+              )
+            ],
+          )),
+      floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(OtherScreen());
+            counterController.increment();
           },
-          child: Text("Open other screen"),
-        )
-      ],
-    ));
+          child: Icon(Icons.add)),
+    );
   }
 }

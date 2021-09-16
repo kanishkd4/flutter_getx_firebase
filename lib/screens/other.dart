@@ -8,19 +8,21 @@ class OtherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Screen was clicked ${_counterController} times"),
-        SizedBox(
-          height: 10.0,
-        ),
-        ElevatedButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: Text("Open other screen")),
-      ],
+        body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Screen was clicked ${_counterController.counter.value} times"),
+          SizedBox(
+            height: 10.0,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("Open other screen")),
+        ],
+      ),
     ));
   }
 }
